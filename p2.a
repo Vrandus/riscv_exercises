@@ -1,0 +1,19 @@
+//initializing variables
+addi x10, x0, 130
+addi x11, x0, 180
+
+bge x10, x11, Loop			//if greater than or equal, goto Loop
+blt x10, x11, Loop2			//if less than, goto Loop2
+beq x0, x0, Exit
+Loop:	beq x10, x11, Exit			//if x10 == x11, goto Exit
+	sub x10, x10, x11			//subtract x11 from x10
+	blt x10, x11, Loop2			//if x10 < x11, goto Loop2
+	beq x0, x0, Loop			//repeat
+
+Loop2: 	beq x10, x11, Exit			//if x10 == x11, goto Exit
+	sub x11, x11, x10			//subtract x10 from x11 
+	blt x11, x10, Loop			//if x11 < x10, goto Loop
+	beq x0, x0, Loop2			//repeat
+
+//end
+Exit:

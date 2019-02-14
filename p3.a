@@ -1,0 +1,31 @@
+//initializing variables 
+//initialize stack
+addi x2, x0, 256
+
+//initialize constant variables
+addi x6, x0, 1
+addi x7, x0, 2
+
+// make x5 = x2
+add x5, x2, x0
+
+//goto Loop
+beq x0, x0, Loop
+
+Loop:	sub x5, x5, x7			//subtract 1 from x5
+	beq x5, x0, Even			//if x5 == 0, then goto Even
+	beq x5, x6, Odd			//if x6 == 1, then goto Odd
+	beq x0, x0, Loop			//Loop
+
+
+Even:	add x4, x2, x0			//add x2 to x4
+	beq x0, x0, Exit			//goto Exit
+
+
+Odd:	sub x4, x2, x6			//subtract 1 from x2 and set to registry x4
+	beq x0, x0, Exit			//goto Exit
+
+Exit:				//end
+
+
+ 
